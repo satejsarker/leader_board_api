@@ -4,7 +4,7 @@ Leader boards API
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.boards import LEADER_BOARDS
+from app.boards import LEADER_BOARDS, USER
 
 description = """
 Leader Boards API helps you do awesome stuff. 🚀
@@ -39,3 +39,4 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True
 
 # including boards api
 app.include_router(router=LEADER_BOARDS, prefix="/boards")
+app.include_router(router=USER, prefix="/user")
