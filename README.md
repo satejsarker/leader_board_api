@@ -6,13 +6,16 @@
 
 `
 prerequisite ->
+        
         # python3
+        
         # pipenv installed ( if not install : install via "pip install --user pipenv"
-`
+        for details follow this link https://pipenv.pypa.io/en/latest/install/#pragmatic-installation-of-pipenv
+
 
 from the root of this project install all the dependency
     `
-        run-> pipenv install for details follow this link https://pipenv.pypa.io/en/latest/install/#pragmatic-installation-of-pipenv
+        run-> pipenv install 
     `
 
 ### RUN the project server ###
