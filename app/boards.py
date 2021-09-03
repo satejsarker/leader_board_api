@@ -1,6 +1,8 @@
 """
 Leader boards api
 """
+from typing import List
+
 from model import data_model
 from model.database import SessionLocal, engine
 from fastapi import APIRouter, status, Depends, HTTPException
@@ -49,3 +51,20 @@ async def user_creation(user: schema.UserCreate,
         raise HTTPException(status_code=400, detail="User already exists with same "
                                                     "name :{}".format(user.name))
     return db_query.create_new_users(db, user)
+
+
+@USER.get('/', status_code=status.HTTP_200_OK, response_model=List[schema.User])
+async def user_creation(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)) -> dict:
+    """
+    get all users
+
+    :param db:  database session
+    :param limit: how many users
+    :param skip: skipped from from
+    :return: all the users
+    :rtype: JSONResponse
+    """
+    db_users = db_query.get_users(db, skip=skip, limit=limit)
+    if not db_users:
+        raise HTTPException(status_code=400, detail="no user found")
+    return db_users

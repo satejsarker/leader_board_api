@@ -39,4 +39,4 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True
 
 # including boards api
 app.include_router(router=LEADER_BOARDS, prefix="/boards")
-app.include_router(router=USER, prefix="/user")
+app.include_router(router=USER, prefix="/users")

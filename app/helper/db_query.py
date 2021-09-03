@@ -23,7 +23,8 @@ def get_users(db: Session, skip: int = 0, limit: int = 100) -> dict:
     :param limit: limit for the data model
     :return:
     """
-    return db.query(data_model.User).offset(skip).limit(limit).all()
+    users=db.query(data_model.User).offset(skip).limit(limit).all()
+    return users
 
 
 def get_user_by_name(db: Session, name: str) -> dict:
@@ -43,8 +44,11 @@ def create_new_users(db: Session, user: schema.UserCreate) -> dict:
     :return: user dict
     :rtype: dict
     """
-    user = data_model.User(name=user.name)
-    db.add(user)
+    db_user = data_model.User(name=user.name, age=user.age, address=user.address)
+    leader_board = data_model.LeaderBoards(points=user.points)
+    db_user.leader_boards.append(leader_board)
+    db.add(db_user)
     db.commit()
-    db.refresh(user)
-    return user
+    db.refresh(db_user)
+    print(db_user)
+    return db_user
