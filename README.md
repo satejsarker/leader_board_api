@@ -15,9 +15,14 @@ prerequisite ->
 #### Install all the Dependency: ####
 from the root of this project install all the dependency
     `
-        run-> pipenv install 
+        run-> 
+    pipenv install 
     `
-
+#### Activating pipenv ####
+run 
+`
+    pipenv shell
+`
 ### RUN the project server ###
 run this command after installation
 `
