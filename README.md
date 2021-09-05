@@ -31,3 +31,7 @@ run this command after installation
 ### API Documentation ##
 All the api documentation will be found  in this URL : `http://0.0.0.0/docs`
     after the running the server 
+
+### Unit Test ###
+>RUN unit test by running bellow command from root of this project 
+>> `pytest  -rP -vv  -o log_cli=true -rP`
