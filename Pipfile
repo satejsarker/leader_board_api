@@ -12,7 +12,6 @@ pydantic = "*"
 starlette = "*"
 typing-extensions = "*"
 uvicorn = "*"
-requests = "*"
 
 [dev-packages]
 pytest = "*"
