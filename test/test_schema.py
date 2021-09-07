@@ -6,7 +6,7 @@ from uuid import uuid4
 from pydantic import ValidationError
 from pytest import fixture, raises
 
-from schema.schema import UserCreate
+from schema.schema import UserCreate, LeaderBoardUpdate
 
 
 @fixture(scope="class")
@@ -51,3 +51,21 @@ class TestUserCreateSchema:
 
         with raises(ValidationError):
             UserCreate(**common_user_data)
+
+    def test_leader_valid_board_update(self):
+        """
+        Test leader board update schema valid data
+        :return:
+        """
+        update_type = LeaderBoardUpdate(update_type="inc")
+        assert update_type.update_type
+        update_type = LeaderBoardUpdate(update_type="dec")
+        assert update_type.update_type
+
+    def test_leader_invalid_board_update(self):
+        """
+        Test leader board update schema invalid data
+        :return:
+        """
+        with raises(ValidationError):
+            LeaderBoardUpdate(update_type="some_value")
