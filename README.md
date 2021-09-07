@@ -19,6 +19,8 @@ from the root of this project install all the dependency
     pipenv install 
     `
 #### Activating pipenv ####
+
+###### Note: All the command will not work unless you activate the environment , make sure you activate the environment before running any command bellow
 run 
 `
     pipenv shell
