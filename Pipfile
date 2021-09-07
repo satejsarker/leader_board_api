@@ -12,10 +12,10 @@ pydantic = "*"
 starlette = "*"
 typing-extensions = "*"
 uvicorn = "*"
-sqlalchemy= "*"
 
 [dev-packages]
 pytest = "*"
+requests = "*"
 
 [requires]
 python_version = "3.9"

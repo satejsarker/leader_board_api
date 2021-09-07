@@ -1,39 +1,36 @@
-from typing import List, Optional, Dict, Mapping
+"""
+User data schema for all the endpoints
+"""
+from enum import Enum
 
 from pydantic import BaseModel, Extra
 
 
-class LeaderBoardBase(BaseModel, extra=Extra.forbid):
-    id: int
-    user_id: int
+class LeaderBoardUpdateEnum(str, Enum):
+    increment = "inc"
+    decrement = "dec"
 
 
-class LeaderBoardCreate(LeaderBoardBase):
-    pass
-
-
-class LeaderBoard(BaseModel):
-    points: int
-
-    class Config:
-        orm_mode = True
+class LeaderBoardUpdate(BaseModel, extra=Extra.forbid):
+    update_type: LeaderBoardUpdateEnum = LeaderBoardUpdateEnum.increment
 
 
 class UserBase(BaseModel):
     name: str
 
 
-class UserCreate(UserBase):
+class UserCreate(UserBase, extra=Extra.forbid):
     name: str
-    address: Optional[str]
+    address: str
     age: int
-    points: int
 
 
 class User(UserBase):
     id: int
     name: str
-    leader_boards: List[LeaderBoard] = {}
+    address: str
+    age: str
+    points: int
 
     class Config:
         orm_mode = True
