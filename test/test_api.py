@@ -55,7 +55,7 @@ class TestApi:
         Test create new user
         :return:
         """
-        res = client.post("/users/", headers={"X-Token": "coneofsilence"},
+        res = client.post("/users/", headers={},
                           json=self.new_user_payload)
         assert res.status_code == 201
         user_id = res.json().get("id")
@@ -67,7 +67,7 @@ class TestApi:
         test increase score
         :return:
         """
-        new_user = client.post("/users/", headers={"X-Token": "coneofsilence"},
+        new_user = client.post("/users/", headers={},
                                json=self.new_user_payload).json()
         assert new_user.get("points") == 0
         user_id = new_user.get("id")
@@ -83,7 +83,7 @@ class TestApi:
         test increase score
         :return:
         """
-        new_user = client.post("/users/", headers={"X-Token": "coneofsilence"},
+        new_user = client.post("/users/", headers={},
                                json=self.new_user_payload).json()
         assert new_user.get("points") == 0
         user_id = new_user.get("id")
@@ -114,7 +114,7 @@ class TestApi:
         :return:
         """
         user_data = self.new_user_payload
-        new_user = client.post("/users/", headers={"X-Token": "coneofsilence"},
+        new_user = client.post("/users/", headers={},
                                json=user_data).json()
         user_id = new_user.get("id")
 
